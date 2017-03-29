@@ -65,6 +65,7 @@ module.exports = function (html, cb) { // can be raw html or an url
     [],
     function (err, window) {
       cb(getInsights(window))
+      window.close()
     }
   )
 
