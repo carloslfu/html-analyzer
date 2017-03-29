@@ -1,0 +1,20 @@
+{
+  "name": "html-analyzer",
+  "version": "0.0.1",
+  "description": "Give you insights of your webpage o raw html code",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "tape src/*.spec.js"
+  },
+  "keywords": [
+    "html",
+    "analyzer",
+    "webpage",
+    "insights"
+  ],
+  "author": "Carlos Galarza <carloslfu@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "jsdom": "^9.12.0"
+  }
+}
