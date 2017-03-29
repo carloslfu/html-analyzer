@@ -20,7 +20,8 @@ function getInsights (window) {
     numberOfElements: 0,
     elementCount: {},
     elementCountOrdered: [],
-    elementDeprecated: [],
+    elementDeprecatedCount: {},
+    elementDeprecatedOrdered: [],
   }
   var i
 
@@ -34,10 +35,18 @@ function getInsights (window) {
   var tagName
   for (i = 0, len = elements.length; i< len; i++) {
     tagName = elements[i].tagName.toLowerCase()
-    if (!insights.elementCount.hasOwnProperty(tagName)) {
-      insights.elementCount[tagName] = 1
+    if (deprecatedElments.indexOf(tagName) === -1) {
+      if (!insights.elementCount.hasOwnProperty(tagName)) {
+        insights.elementCount[tagName] = 1
+      } else {
+        insights.elementCount[tagName]++
+      }
     } else {
-      insights.elementCount[tagName]++
+      if (!insights.elementCount.hasOwnProperty(tagName)) {
+        insights.elementDeprecatedCount[tagName] = 1
+      } else {
+        insights.elementDeprecatedCount[tagName]++
+      }
     }
   }
 
@@ -50,9 +59,17 @@ function getInsights (window) {
 
   insights.elementCountOrdered = insights.elementCountOrdered.sort((a, b) => b[1] - a[1])
 
-  // deprecated elements
+  // deprecated elements ordered
 
-  insights.elementDeprecated = insights.elementCountOrdered.filter(item => deprecatedElments.indexOf(item[0]) !== -1)
+  var tagNamesDeprecated = Object.keys(insights.elementDeprecatedCount)
+  for (i = 0, len = tagNamesDeprecated.length; i < len; i++) {
+    insights.elementDeprecatedOrdered[i] = [
+      tagNamesDeprecated[i],
+      insights.elementDeprecatedCount[tagNamesDeprecated[i]]
+    ]
+  }
+
+  insights.elementDeprecatedOrdered = insights.elementDeprecatedOrdered.sort((a, b) => b[1] - a[1])
 
   return insights
 

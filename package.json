@@ -1,6 +1,6 @@
 {
   "name": "html-analyzer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Give you insights of your webpage o raw html code",
   "main": "src/index.js",
   "scripts": {
@@ -11,6 +11,10 @@
     "analyzer",
     "webpage",
     "insights"
+  ],
+  "files": [
+    "src/",
+    "LICENSE"
   ],
   "author": "Carlos Galarza <carloslfu@gmail.com>",
   "license": "MIT",

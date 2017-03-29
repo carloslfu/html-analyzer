@@ -1,5 +1,5 @@
 let htmlAnalyzer = require('./index')
 
-htmlAnalyzer('https://www.facebook.com/', insights => {
+htmlAnalyzer('https://www.google.com/', insights => {
   console.log(insights)
 })
